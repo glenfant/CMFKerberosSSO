@@ -1,0 +1,30 @@
+Installation
+
+  Warning :
+
+    Don't install this product if you don't need Kerberos SSO with Active Directory
+
+  Depends products :
+
+    - LDAPUserGroupsFolder (>=2.5.0-1)
+
+  Products installation :
+
+    Nothing special for this products. Take care to follow LDAPUserGroupsFolder
+    documentation to configure Active Directory compatibility
+
+  SSO installation :
+
+    Replace the objet cookie_authentification 'Cookie Crumbler' in root of your
+    CMF, CPS or Plone instance by a 'NTLM Cookie Crumbler' with the same id.
+    After, just take care that NTML patch for LDAPUserGroupsFolder acl_users is
+    applied (here LDAPUserGroupsFolderPatch).
+
+  Apache2 configuration :
+
+    You must compile mod_auth_kerb for apache2. Check if development library for
+    apache2 are installed. http://modauthkerb.sourceforge.net/
+
+  Apache2 virtualhost:
+
+    Follow the example shown on the 'vhost_sso.conf' file.
