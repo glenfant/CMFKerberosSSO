@@ -73,14 +73,6 @@ class KerberosCookieCrumbler(CookieCrumbler.CookieCrumbler):
             if request.form.get('ntlm_remote_user'):
                 del request.form['ntlm_remote_user']
 
-        # Hmmm à priori à dégager, je ne vois pas d'ou une chose similaire peut
-        # provenir avec Kerberos.
-        #elif hasattr(request.form, 'ntlm_remote_user'):
-        elif False:
-            username = request.form.get('ntlm_remote_user')
-            setattr(request, 'kerberos_authenticated_user', username)
-            del request.form['ntlm_remote_user']
-
         else:
             username = False
             setattr(request, 'kerberos_authenticated_user', None)
