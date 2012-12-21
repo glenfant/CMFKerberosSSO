@@ -302,7 +302,7 @@ class CMFKerberosSSOTests (unittest.TestCase):
             'standard_login_footer', 'standard_login_header'))
 
 def test_suite():
-    return unittest.makeSuite(CookieCrumblerTests)
+    return unittest.makeSuite(CMFKerberosSSOTests)
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')
