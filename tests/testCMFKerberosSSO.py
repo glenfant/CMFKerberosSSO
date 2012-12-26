@@ -20,7 +20,7 @@ from ZPublisher.HTTPResponse import HTTPResponse
 from ZPublisher.BaseRequest import RequestContainer
 from zExceptions import Redirect
 
-from Products.CMFKerbersoSSO \
+from Products.CMFKerberosSSO.KerberosCookieCrumbler, \
      import KerberosCookieCrumbler, manage_addCC
 
 
