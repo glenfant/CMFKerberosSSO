@@ -290,11 +290,11 @@ class CMFKerberosSSOTests (unittest.TestCase):
 
     def testCreateForms(self):
         # Verify the factory creates the login forms.
-        if CookieCrumbler.__module__.find('CMFCore') >= 0:
+        if KerberosCookieCrumbler.__module__.find('CMFCore') >= 0:
             # This test is disabled in CMFCore.
             return
         self.root._delObject('cookie_authentication')
-        manage_addCC(self.root, 'login', create_forms=1)
+        manage_addCC(self.root, 'login')
         ids = self.root.login.objectIds()
         ids.sort()
         self.assertEqual(tuple(ids), (
