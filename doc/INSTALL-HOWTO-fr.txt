@@ -30,6 +30,6 @@ Installation
 
   Hôte virtuel apache2 :
 
-    Suivre exemple sur l'hôte virtuel présenté dans le fichier «vhost_sso.conf».
+    Suivre exemple sur l'hôte virtuel présenté dans le fichier «vhost_kerberos.conf».
     Ne touchez pas aux occurences de «ntlm_remote_user». C'est sur ce paramètre
     que repose le SSO.

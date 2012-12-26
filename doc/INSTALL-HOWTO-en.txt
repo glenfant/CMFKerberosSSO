@@ -27,4 +27,4 @@ Installation
 
   Apache2 virtualhost:
 
-    Follow the example shown on the 'vhost_sso.conf' file.
+    Follow the example shown on the 'vhost_kerberos.conf' file.
