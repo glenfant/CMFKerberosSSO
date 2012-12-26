@@ -20,7 +20,7 @@ from ZPublisher.HTTPResponse import HTTPResponse
 from ZPublisher.BaseRequest import RequestContainer
 from zExceptions import Redirect
 
-from Products.CMFKerberosSSO.KerberosCookieCrumbler, \
+from Products.CMFKerberosSSO.KerberosCookieCrumbler \
      import KerberosCookieCrumbler, manage_addCC
 
 
@@ -104,8 +104,8 @@ class CMFKerberosSSOTests (unittest.TestCase):
                          'gilles')
         resp = self.req.response
         self.assert_(resp.cookies.has_key('__ac'))
-        self.assertEqual(resp.cookies['__ac']['value'],
-                         self.credentials)
+        resp_cookies__ac = urllib.unquote(resp.cookies['__ac']['value']).replace('\n', '')
+        self.assertEqual(resp_cookies__ac, urllib.unquote(self.credentials))
         self.assertEqual(resp.cookies['__ac']['path'], '/')
 
 
@@ -295,11 +295,9 @@ class CMFKerberosSSOTests (unittest.TestCase):
             return
         self.root._delObject('cookie_authentication')
         manage_addCC(self.root, 'login')
-        ids = self.root.login.objectIds()
-        ids.sort()
-        self.assertEqual(tuple(ids), (
-            'index_html', 'logged_in', 'logged_out', 'login_form',
-            'standard_login_footer', 'standard_login_header'))
+        prs = self.root.login.propertyItems()
+        propertyItems = [('auth_cookie', '__ac'), ('name_cookie', '__ac_name'), ('pw_cookie', '__ac_password'), ('persist_cookie', '__ac_persistent'), ('auto_login_page', 'login_form'), ('logout_page', 'logged_out'), ('unauth_page', ''), ('local_cookie_path', 0), ('cache_header_value', 'private'), ('log_username', 1)]
+        self.assertEqual(prs, propertyItems)
 
 def test_suite():
     return unittest.makeSuite(CMFKerberosSSOTests)
